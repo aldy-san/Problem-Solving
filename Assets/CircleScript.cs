@@ -10,6 +10,8 @@ public class CircleScript : MonoBehaviour
     Vector2 movement;
     private int score = 0;
     public TextMeshProUGUI scoreText;
+
+    public SpawnerScript spawnerScript;
     void Update()
     {
         if (Input.GetMouseButton(0))
@@ -24,7 +26,22 @@ public class CircleScript : MonoBehaviour
     {
         score++;
         scoreText.text = "Skor : " + score.ToString();
-        Destroy(collision.gameObject);
+        collision.gameObject.SetActive(false);
+        StartCoroutine(SpawnAgain(collision.gameObject));
+    }
 
+    IEnumerator SpawnAgain(GameObject obj, int time = 3)
+    {
+        yield return new WaitForSeconds(time);
+        obj.SetActive(true);
+        float randomHorizontal = Random.Range(-spawnerScript.maxHorizontal, spawnerScript.maxHorizontal);
+        float randomVertical = Random.Range(-spawnerScript.maxVertical, spawnerScript.maxVertical);
+        if(!GetComponent<Collider2D>().bounds.Contains(new Vector3(randomHorizontal, randomVertical, 0)))
+        {
+            obj.transform.position = new Vector3(randomHorizontal, randomVertical, 0);
+        } else
+        {
+            StartCoroutine(SpawnAgain(obj, 0));
+        }
     }
 }
