@@ -497,6 +497,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 545712056}
   speed: 0.5
+  scoreText: {fileID: 1294358524}
+  spawnerScript: {fileID: 1221008042}
 --- !u!58 &545712058
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -728,7 +730,7 @@ GameObject:
   - component: {fileID: 1294358525}
   - component: {fileID: 1294358524}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Skor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -773,7 +775,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Skor : '
+  m_text: 'Skor : 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
